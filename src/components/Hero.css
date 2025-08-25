@@ -1,131 +1,93 @@
-/* ================================
-   Hero Section Styles
-================================= */
 .hero-section {
-  position: relative;
-  width: 100vw;
   height: 100vh;
-  overflow: hidden;
-  background: linear-gradient(120deg, #1e3c72 0%, #2a5298 50%, #6a11cb 100%);
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #000000 0%, #0a0f29 40%, #1e3a8a 70%, #2563eb 100%);
+  font-family: "Segoe UI", sans-serif;
+  color: white;
 }
 
-/* Background Clouds */
-.hero-bg {
+/* Overlay moving gradient */
+.overlay {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.05), transparent 70%);
+  animation: moveOverlay 16s linear infinite;
+  z-index: 0;
+}
+@keyframes moveOverlay {
+  0% { transform: translate(-10%, -10%); }
+  50% { transform: translate(10%, 10%); }
+  100% { transform: translate(-10%, -10%); }
+}
+
+/* Starfield background */
+.starfield {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent url("https://www.transparenttextures.com/patterns/stardust.png") repeat;
+  opacity: 0.3;
+  z-index: 0;
+  animation: twinkle 4s infinite alternate;
+}
+@keyframes twinkle {
+  0% { opacity: 0.2; }
+  100% { opacity: 0.5; }
+}
+
+/* Glowing particles */
+.particles {
+  position: absolute;
   width: 100%;
   height: 100%;
   z-index: 1;
-  overflow: hidden;
 }
-
-.cloud {
+/* .particle {
   position: absolute;
-  background: radial-gradient(circle at 60% 40%, #e0e7ff 60%, #b3cfff 100%);
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle, #93c5fd, transparent 70%);
+  border-radius: 50%;
   opacity: 0.7;
-  border-radius: 50%;
-  filter: blur(8px) brightness(1.2);
-  animation: cloudMove 18s linear infinite;
-}
-.cloud1 { width: 320px; height: 120px; top: 12%; left: 8%; animation-delay: 0s; }
-.cloud2 { width: 220px; height: 90px; top: 30%; left: 60%; animation-delay: 4s; }
-.cloud3 { width: 180px; height: 70px; top: 65%; left: 20%; animation-delay: 8s; }
-.cloud4 { width: 260px; height: 100px; top: 55%; left: 75%; animation-delay: 12s; }
+} */
 
-@keyframes cloudMove {
-  0% { transform: translateX(0) scale(1); opacity: 0.7; }
-  50% { transform: translateX(40px) scale(1.08); opacity: 0.85; }
-  100% { transform: translateX(0) scale(1); opacity: 0.7; }
-}
-
-/* Floating Particles */
-.particles {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 2;
-}
 .particle {
   position: absolute;
-  width: 6px; height: 6px;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle, #93c5fd, transparent 70%);
   border-radius: 50%;
-  background: linear-gradient(135deg, #a0c4ff 60%, #6a11cb 100%);
-  opacity: 0.5;
-  animation: particleFloat 12s linear infinite;
-}
-.particle:nth-child(odd) {
-  background: linear-gradient(135deg, #6a11cb 60%, #a0c4ff 100%);
+  opacity: 0.7;
 }
 
-/* Random placement via inline vars */
-.particle {
-  top: calc(100% * var(--top, 0.5));
-  left: calc(100% * var(--left, 0.5));
-  animation-delay: calc(0.2s * var(--delay, 1));
-}
-
-@keyframes particleFloat {
-  0% { transform: translateY(0) scale(1); opacity: 0.5; }
-  50% { transform: translateY(-40px) scale(1.2); opacity: 0.7; }
-  100% { transform: translateY(0) scale(1); opacity: 0.5; }
-}
-
-/* ================================
-   Hero Content
-================================= */
+/* Content */
 .hero-content {
   position: relative;
-  z-index: 3;
-  text-align: center;
-  pointer-events: none;
-  padding: 0 1rem;
+  z-index: 2;
 }
-
-/* Main Title (Black with Azure Glow) */
-.glowy-title {
+.hero-content h1 {
   font-size: 4.5rem;
   font-weight: 900;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-
-  text-shadow:
-    0 0 12px rgba(0, 220, 255, 1),
-    0 0 24px rgba(0, 183, 255, 0.9),
-    0 0 48px rgba(0, 183, 255, 0.8),
-    0 0 100px rgba(0, 255, 255, 0.7);
-
-  animation: glowPulse 2.5s infinite alternate;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, #60a5fa, #3b82f6, #93c5fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-
-@keyframes glowPulse {
-  from {
-    text-shadow:
-      0 0 12px rgba(0, 220, 255, 1),
-      0 0 24px rgba(0, 183, 255, 0.9),
-      0 0 48px rgba(0, 183, 255, 0.8),
-      0 0 100px rgba(0, 255, 255, 0.7);
-  }
-  to {
-    text-shadow:
-      0 0 20px rgba(0, 255, 255, 1),
-      0 0 40px rgba(0, 255, 255, 0.9),
-      0 0 80px rgba(0, 255, 255, 0.8),
-      0 0 140px rgba(0, 255, 255, 0.7);
-  }
+.hero-content h1 span {
+  color: #93c5fd;
 }
-
-/* Subtitle with subtle glow */
 .hero-content p {
-  font-size: 1.7rem;
-  margin-top: 1.5rem;
-  color: #ffffff;
-  text-shadow:
-    0 0 6px rgba(0, 200, 255, 0.8),
-    0 0 12px rgba(0, 200, 255, 0.6),
-    0 0 20px rgba(0, 200, 255, 0.5);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #c7d2fe;
+  margin-top: 1rem;
 }
