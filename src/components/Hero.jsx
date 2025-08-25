@@ -108,6 +108,17 @@ export default function Hero() {
           Microsoft Azure <span>Xplore 2025</span>
         </h1>
         <p ref={subRef}></p>
+        <img
+          src="public/azure-icon-svgrepo-com.svg"
+          alt="Clippy"
+          className="clippy-img"
+          style={{
+            display: "block",
+            margin: "2rem auto 0 auto",
+            width: "30rem",
+            filter: "drop-shadow(0 0 12px #2563eb)"
+          }}
+        />
       </div>
     </section>
   );

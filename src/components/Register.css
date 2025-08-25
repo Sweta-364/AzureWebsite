@@ -1,3 +1,43 @@
+/* Clippy floating animation */
+.clippy-register {
+  animation: clippyFloat 2.8s ease-in-out infinite alternate;
+  position: absolute;
+  left: -25rem; /* push further left */
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 120px;
+  max-width: 22vw;
+  height: auto;
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .clippy-register {
+    left: -4vw;
+    width: 80px;
+    max-width: 28vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .clippy-register {
+    position: static;
+    display: block;
+    margin: 0 auto 1.2rem auto;
+    left: unset;
+    top: unset;
+    transform: none;
+    width: 60px;
+    max-width: 36vw;
+  }
+}
+
+@keyframes clippyFloat {
+  0% { transform: translateY(0) scale(1); filter: drop-shadow(0 0 8px #2563eb); }
+  50% { transform: translateY(-18px) scale(1.04); filter: drop-shadow(0 0 16px #2563eb); }
+  100% { transform: translateY(0) scale(1); filter: drop-shadow(0 0 8px #2563eb); }
+}
 /* --- SECTION BACKGROUND --- */
 .register-section {
   position: relative;
@@ -37,29 +77,39 @@
   position: relative;
   z-index: 2;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /* --- REGISTER BUTTON --- */
 .register-now-btn {
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  background: #2563eb;
   border: none;
-  padding: 1.2rem 3rem;
-  border-radius: 999px;
-  font-size: 1.4rem;
-  font-weight: bold;
+  padding: 1rem 2.2rem;
+  border-radius: 16px;
+  font-size: 1.13rem;
+  font-weight: 700;
   cursor: pointer;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  box-shadow: 0 0 25px rgba(37,99,235,0.6);
-  transition: all 0.4s ease;
+  color: #fff;
+  letter-spacing: 1px;
+  position: relative;
+  outline: none;
+  display: block;
+  margin: 0 auto;
 }
+
+.register-now-btn::after {
+  display: none;
+}
+
+@keyframes registerBtnGlow {
+  /* removed shimmer animation */
+}
+
 .register-now-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 40px rgba(37,99,235,0.8);
+  background: #1d4ed8;
+  color: #fff;
 }
 
 /* --- REVEALED FORM CARD --- */
@@ -130,20 +180,7 @@
 
 /* Shimmer effect */
 .register-btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -75%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255, 255, 255, 0.4),
-    transparent
-  );
-  transform: skewX(-20deg);
-  transition: 0.5s;
+  display: none;
 }
 
 /* Hover effect */
@@ -155,6 +192,6 @@
 
 /* Animate shimmer on hover */
 .register-btn:hover::before {
-  left: 130%;
+  /* removed shimmer animation */
 }
 

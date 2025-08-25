@@ -1,3 +1,87 @@
+/* Glowing line between session 1 and session 2 */
+.about-glow-line {
+  position: absolute;
+  left: calc(50% + 180px); /* right edge of session 1 card */
+  top: calc(50% + 120px);  /* bottom edge of session 1 card */
+  pointer-events: none;
+  z-index: 30;
+}
+@media (max-width: 900px) {
+  .about-glow-line {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.7);
+  }
+}
+/* Shiny moving gradient border for about cards */
+.about-card {
+  position: relative;
+  background: linear-gradient(120deg, #181a20 0%, #23243a 80%, #1e3c72 100%);
+  color: #fff;
+  border-radius: 2rem;
+  box-shadow: 0 6px 40px rgba(0,0,0,0.22);
+  width: 95vw;
+  max-width: 420px;
+  height: 320px;
+  z-index: 20;
+  transition: box-shadow 0.3s, transform 0.3s;
+  cursor: pointer;
+  perspective: 1200px;
+  margin-bottom: 0.5rem;
+  overflow: visible;
+}
+
+.about-card::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 2.2rem;
+  padding: 0.5rem;
+  background: linear-gradient(120deg, #3a3f5a 0%, #2563eb 40%, #00cfff 60%, #3a3f5a 100%);
+  opacity: 0.55;
+  background-size: 400% 400%;
+  animation: shiny-border-move 8s linear infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes shiny-border-move {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.about-card > .about-card-inner {
+  position: relative;
+  z-index: 2;
+  border-radius: 2rem;
+  overflow: hidden;
+  background: linear-gradient(120deg, #181a20 0%, #23243a 80%, #1e3c72 100%);
+  box-shadow: 0 2px 24px rgba(0,0,0,0.22);
+}
+/* Alternate card alignment for desktop/laptop */
+@media (min-width: 900px) {
+  .about-cards {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem 6vw;
+  }
+  .about-card.left {
+    align-self: flex-start;
+    margin-right: auto;
+    margin-left: -30rem;
+    transform: translateX(-6vw);
+    height:25rem;
+  }
+  .about-card.right {
+    align-self: flex-end;
+    margin-left: auto;
+    margin-right: -30rem;
+    transform: translateX(6vw);
+    height:25rem;
+  }
+}
 /* About Section Styles */
 .about-section {
   position: relative;
@@ -216,28 +300,32 @@
   transform-style: preserve-3d;
 }
 .about-card:hover .about-card-inner {
-  transform: rotateY(180deg);
+  /* Flip is handled by framer-motion, not hover. */
 }
 
 .about-card-front, .about-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden;
+  /* backface-visibility: hidden; */
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
   border-radius: 2rem;
+  color: #f3f6fa;
+  text-shadow: 0 2px 12px #23243a, 0 0 2px #2563eb;
+  z-index: 2;
 }
 .about-card-front {
   z-index: 2;
 }
 .about-card-back {
   background: linear-gradient(120deg, #23243a 0%, #181a20 100%);
-  color: #fff;
-  transform: rotateY(180deg);
+  color: #f3f6fa;
+  /* Removed transform: rotateY(180deg); to allow framer-motion to handle flipping */
   font-size: 2.1rem;
+  z-index: 3;
 @media (max-width: 600px) {
   .about-card {
     width: 95vw;
@@ -285,11 +373,14 @@
   font-weight: 700;
   margin-bottom: 0.7rem;
   letter-spacing: 1px;
+  color: #e0e7ff;
+  text-shadow: 0 1px 8px #23243a;
 }
 .about-card-desc {
   font-size: 1.05rem;
   color: #e0e7ff;
-  opacity: 0.92;
+  opacity: 0.98;
+  text-shadow: 0 1px 6px #23243a;
 }
 @media (max-width: 900px) {
   .about-cards {
@@ -368,9 +459,17 @@
 }
 
 .about-card-back-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   font-size: 2.1rem;
   font-weight: 900;
-  margin-top: 2.5rem;
+  margin-top: 0;
   word-break: break-word;
+  color: #fff !important;
+  z-index: 10;
+  opacity: 1 !important;
+  text-shadow: 0 2px 12px #23243a, 0 0 2px #2563eb;
 }
