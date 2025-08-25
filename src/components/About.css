@@ -245,7 +245,6 @@
   background: url("/public/azure-icon-svgrepo-com.svg") repeat center center, linear-gradient(120deg, #0a0a13 0%, #181a20 100%);
   opacity: 0.04;
   filter: blur(2px) grayscale(1);
-/* ...existing code... */
 /* Add these elements to your About.jsx render for the animated background: */
 /* <div className="about-bg-animated"></div> */
 /* <div className="about-bg-lights">
@@ -292,150 +291,149 @@
   margin-bottom: 0.5rem;
 }
 
+/* --- Redesigned About Cards --- */
+.about-card {
+  background: rgba(30, 34, 54, 0.92);
+  border-radius: 1.6rem;
+  box-shadow: 0 8px 32px rgba(37,99,235,0.12), 0 2px 18px rgba(96,165,250,0.08);
+  width: 95vw;
+  max-width: 420px;
+  height: 320px;
+  position: relative;
+  perspective: 1200px;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  transition: box-shadow 0.3s, transform 0.3s;
+  overflow: visible;
+}
+  /* border-radius: 2rem; */
 .about-card-inner {
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.7s cubic-bezier(.4,2,.3,.7), box-shadow 0.4s;
+  transition: transform 0.7s cubic-bezier(.4,2,.3,.7);
   transform-style: preserve-3d;
 }
-.about-card:hover .about-card-inner {
-  /* Flip is handled by framer-motion, not hover. */
+.about-card.active .about-card-inner {
+  transform: rotateY(180deg);
 }
-
+  box-sizing: border-box;
 .about-card-front, .about-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
-  /* backface-visibility: hidden; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  border-radius: 2rem;
-  color: #f3f6fa;
-  text-shadow: 0 2px 12px #23243a, 0 0 2px #2563eb;
-  z-index: 2;
-}
-.about-card-front {
-  z-index: 2;
-}
-.about-card-back {
-  background: linear-gradient(120deg, #23243a 0%, #181a20 100%);
-  color: #f3f6fa;
-  /* Removed transform: rotateY(180deg); to allow framer-motion to handle flipping */
-  font-size: 2.1rem;
-  z-index: 3;
-@media (max-width: 600px) {
-  .about-card {
-    width: 95vw;
-    min-width: 0;
-    height: 160px;
-    font-size: 1rem;
-  }
-  .about-card.active {
-    height: 220px;
-    max-width: 98vw;
-  }
-  .about-card-back {
-    font-size: 1.2rem;
-  }
-  .close-btn {
-    width: 22px !important;
-    height: 22px !important;
-    font-size: 0.9rem !important;
-    top: 6px !important;
-    right: 6px !important;
-    left: auto !important;
-@media (max-width: 1200px) {
-  .about-card {
-    width: 80vw;
-    max-width: 400px;
-    height: 180px;
-  }
-  .about-card.active {
-    height: 260px;
-    max-width: 95vw;
-  }
-}
-  }
-}
-  font-weight: 900;
-  letter-spacing: 2px;
-}
-.about-icon {
-  font-size: 2.7rem;
-  margin-bottom: 1.2rem;
-  filter: drop-shadow(0 0 8px #6a11cb);
-}
-.about-card-title {
-  font-size: 1.35rem;
-  font-weight: 700;
-  margin-bottom: 0.7rem;
-  letter-spacing: 1px;
-  color: #e0e7ff;
-  text-shadow: 0 1px 8px #23243a;
-}
-.about-card-desc {
-  font-size: 1.05rem;
-  color: #e0e7ff;
-  opacity: 0.98;
-  text-shadow: 0 1px 6px #23243a;
-}
-@media (max-width: 900px) {
-  .about-cards {
-    flex-direction: column;
-    gap: 2rem;
-  }
-  .about-card {
-    width: 95vw;
-    height: 180px;
-  }
-}
-
-.about-card {
-  background: linear-gradient(120deg, #181a20 0%, #23243a 80%, #1e3c72 100%);
-  color: #fff;
-  border-radius: 2rem;
-  box-shadow: 0 6px 40px rgba(0,0,0,0.22);
-  width: 95vw;
-  max-width: 420px;
-  height: 320px;
-  z-index: 20;
-  position: relative;
-  perspective: 1200px;
-  margin-bottom: 0.5rem;
-  cursor: pointer;
-}
-
-.about-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-}
-
-.about-card-front,
-.about-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  border-radius: 1.6rem;
+  box-sizing: border-box;
   backface-visibility: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
-  border-radius: 2rem;
+  padding: 2rem 1.5rem 2rem 1.5rem;
+}
+.about-card-front {
+  background: linear-gradient(120deg, #23243a 0%, #071126 100%);
+  color: #e0e7ff;
+  z-index: 2;
+  box-shadow: 0 2px 12px rgba(37,99,235,0.08);
+  height:25rem;
+}
+.about-card-title {
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+  color: #60a5fa;
+  text-shadow: 0 1px 8px #23243a;
+}
+.about-card-desc {
+  font-size: 1.08rem;
+  color: #e0e7ff;
+  opacity: 0.98;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+.about-card-back {
+  background: linear-gradient(120deg, #181a20 0%, #23243a 100%);
+  color: #e0e7ff;
+  transform: rotateY(180deg);
+  z-index: 3;
+  overflow-y: auto;
+  font-size: 0.98rem;
+  line-height: 1.45;
+  padding: 1.2rem 1.1rem 1.2rem 1.1rem;
+  /* Ensure text fits and wraps nicely */
+  overflow-y: auto;
+}
+.back-text {
+  margin-top: 0.2rem;
+  word-break: break-word;
+  color: #e0e7ff;
+  font-size: 0.98rem;
+  line-height: 1.45;
+  text-align: left;
+  opacity: 1 !important;
+  z-index: 10;
+  text-shadow: 0 2px 8px #23243a, 0 0 2px #2563eb;
+}
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  background: #23243a;
+  color: #fff;
+  border: none;
+  box-shadow: 0 2px 8px #181a20;
+  cursor: pointer;
+  z-index: 20;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-card-front {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
 }
 
 .about-card-back {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
   background: linear-gradient(120deg, #23243a 0%, #181a20 100%);
-  color: #fff;
+  color: #e0e7ff;
   transform: rotateY(180deg);
-  font-size: 2.1rem;
-  font-weight: 900;
-  letter-spacing: 2px;
+  font-size: 0.98rem;
+  line-height: 1.45;
+  letter-spacing: 1px;
+  padding: 1.2rem 1.1rem 1.2rem 1.1rem;
+  overflow-y: auto;
+  box-sizing: border-box;
+  z-index: 10;
+  height:25rem;
+}
+
+
+
+.back-text {
+  margin-top: 3.2rem;
+  word-break: break-word;
+  color: #e0e7ff;
+  font-size: 0.98rem;
+  line-height: 1.45;
+  text-align: left;
+  opacity: 1 !important;
+  z-index: 10;
+  text-shadow: 0 2px 8px #23243a, 0 0 2px #2563eb;
 }
 
 .close-btn {
@@ -451,25 +449,9 @@
   border: none;
   box-shadow: 0 2px 8px #181a20;
   cursor: pointer;
-  z-index: 2;
+  z-index: 20;
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.about-card-back-content {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-size: 2.1rem;
-  font-weight: 900;
-  margin-top: 0;
-  word-break: break-word;
-  color: #fff !important;
-  z-index: 10;
-  opacity: 1 !important;
-  text-shadow: 0 2px 12px #23243a, 0 0 2px #2563eb;
 }

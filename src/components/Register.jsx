@@ -40,7 +40,7 @@ export default function Register() {
         {!showForm && (
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1.2rem', marginTop: '1.5rem' }}>
             <img
-              src="/public/clippy.png"
+              src="/clippy.png"
               alt="Clippy"
               className="clippy-register"
               style={{ width: '500px', height: 'auto', filter: 'drop-shadow(0 0 8px #2563eb)' }}

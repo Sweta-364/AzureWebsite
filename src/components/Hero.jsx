@@ -103,20 +103,21 @@ export default function Hero() {
 </div>
 
 
-      <div className="hero-content">
+      <div className="hero-content animated-border">
         <h1 ref={headingRef}>
           Microsoft Azure <span>Xplore 2025</span>
         </h1>
         <p ref={subRef}></p>
         <img
-          src="public/azure-icon-svgrepo-com.svg"
+          src="/azure-icon-svgrepo-com.svg"
           alt="Clippy"
-          className="clippy-img"
+          className="clippy-img float-hero"
           style={{
             display: "block",
             margin: "2rem auto 0 auto",
-            width: "30rem",
-            filter: "drop-shadow(0 0 12px #2563eb)"
+            width: "min(30rem, 80vw)",
+            maxWidth: "100%",
+            filter: "drop-shadow(0 0 16px #2563eb)"
           }}
         />
       </div>
