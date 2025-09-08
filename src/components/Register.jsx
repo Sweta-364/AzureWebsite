@@ -3,7 +3,6 @@ import "./Register.css";
 
 export default function Register() {
   const [stars, setStars] = useState([]);
-  const [showForm, setShowForm] = useState(false);
 
   // Generate stars once
   useEffect(() => {
@@ -37,37 +36,22 @@ export default function Register() {
 
       {/* Foreground Content */}
       <div className="register-content">
-        {!showForm && (
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1.2rem', marginTop: '1.5rem' }}>
-            <img
-              src="/clippy.png"
-              alt="Clippy"
-              className="clippy-register"
-              style={{ width: '500px', height: 'auto', filter: 'drop-shadow(0 0 8px #2563eb)' }}
-            />
-            <button
-              className="register-now-btn"
-              onClick={() => setShowForm(true)}
-            >
-              Register Now
-            </button>
-          </div>
-        )}
-
-        {showForm && (
-          <div className="register-card">
-            <h2 className="register-title">Join the Revolution</h2>
-            <form className="register-form">
-              <input type="text" placeholder="Full Name" required />
-              <input type="email" placeholder="Email Address" required />
-              <input type="text" placeholder="Organization/Institution" required />
-              <input type="tel" placeholder="Phone Number" required />
-              <button type="submit" className="register-btn">
-                Secure Your Spot
-              </button>
-            </form>
-          </div>
-        )}
+        <div className="register-cta">
+          <img
+            src="/clippy.png"
+            alt="Clippy"
+            className="clippy-register"
+            style={{ width: '500px', height: 'auto', filter: 'drop-shadow(0 0 8px #2563eb)' }}
+          />
+          <a
+            className="register-now-btn"
+            href="https://unstop.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Register Now
+          </a>
+        </div>
       </div>
     </section>
   );

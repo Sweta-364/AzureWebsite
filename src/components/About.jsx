@@ -139,7 +139,7 @@ export default function About() {
                 <motion.div
                   className="about-card-inner"
                   animate={isActive ? { rotateY: 180 } : { rotateY: 0 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                  transition={{ type: "tween", duration: 0.45, ease: "easeInOut" }}
                   onClick={() => setActive(isActive ? null : i)}
                   style={{ cursor: "pointer", position: "relative" }}
                 >

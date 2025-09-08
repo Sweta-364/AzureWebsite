@@ -82,8 +82,26 @@
   justify-content: center;
 }
 
+/* CTA layout container */
+.register-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+/* Mobile: stack image above button and center */
+@media (max-width: 768px) {
+  .register-cta {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
 /* --- REGISTER BUTTON --- */
 .register-now-btn {
+  text-decoration: none;
   background: linear-gradient(90deg, #2563eb 0%, #60a5fa 100%);
   border: none;
   padding: 1rem 2.2rem;

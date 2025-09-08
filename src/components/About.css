@@ -1,19 +1,4 @@
-/* Glowing line between session 1 and session 2 */
-.about-glow-line {
-  position: absolute;
-  left: calc(50% + 180px); /* right edge of session 1 card */
-  top: calc(50% + 120px);  /* bottom edge of session 1 card */
-  pointer-events: none;
-  z-index: 30;
-}
-@media (max-width: 900px) {
-  .about-glow-line {
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%) scale(0.7);
-  }
-}
-/* Shiny moving gradient border for about cards */
+
 .about-card {
   position: relative;
   background: linear-gradient(120deg, #181a20 0%, #23243a 80%, #1e3c72 100%);
@@ -454,4 +439,34 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Mobile sizing for about cards: narrower and taller for better fit */
+@media (max-width: 600px) {
+  .about-card-front {
+    background: linear-gradient(120deg, #23243a 0%, #071126 100%);
+    color: #e0e7ff;
+    z-index: 2;
+    box-shadow: 0 2px 12px rgba(37,99,235,0.08);
+    height:30rem;
+  }
+  .about-cards {
+    gap: 1.6rem;
+  }
+  .about-card {
+    width: 90vw;
+    max-width: 90vw;
+    height: 460px;
+  }
+  .about-card-back {
+    background: linear-gradient(120deg, #181a20 0%, #23243a 100%);
+    color: #e0e7ff;
+    transform: rotateY(180deg);
+    z-index: 3;
+    font-size: 0.98rem;
+    line-height: 1.45;
+    padding: 1.2rem 1.1rem 1.2rem 1.1rem;
+    overflow-y: auto;
+    height: 30rem;
+  }
 }
